@@ -1,0 +1,9 @@
+
+input: ["img"]
+output: ["bboxes", "bbox_labels", "bbox_scores"]
+
+weights_parent_dir: "peekingduck/nodes/model/yolov6v1/weights/yolov6chkpt.pt"
+yaml_dir: "peekingduck/nodes/model/yolov6v1/weights/coco.yaml"
+config_dir: "peekingduck/nodes/model/yolov6v1/configs/yolov6n.py"
+
+detect: [0]

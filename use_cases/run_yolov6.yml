@@ -1,0 +1,8 @@
+nodes:
+- input.visual:
+    # source: "peekingduck/nodes/model/yolov6v1/coco/val"
+    source: 0
+- model.yolov6
+- draw.bbox:
+    show_labels: True
+- output.screen
