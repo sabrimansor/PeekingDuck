@@ -16,8 +16,10 @@ class YoloV6Model(torch.nn.Module):
         stride = int(model.stride.max())
         self.__dict__.update(locals())  # assign all variables to self
 
+    @torch.no_grad()
     def forward(self, im, val=False):
         y = self.model(im)
+        # print("WHAT IS THE LENGTH: ", len(y))
         if isinstance(y, np.ndarray):
             y = torch.tensor(y, device=self.device)
         return y

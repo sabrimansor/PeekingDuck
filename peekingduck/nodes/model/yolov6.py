@@ -1,5 +1,13 @@
 """
 YoloV6 Model for PeekingDuck Training
+
+The yolov6 package is a library for implementing the YOLOv6 object detection algorithm. It provides functions for training and evaluating YOLOv6 models, as well as functions for post-processing the output of YOLOv6 models to generate bounding boxes and class predictions for objects in an image.
+
+This package is designed to be user-friendly, with a simple API and comprehensive documentation. It is also highly customizable, allowing users to specify different parameters for the YOLOv6 algorithm and adjust the training process to their specific needs.
+
+To use the yolov6 package, simply import it into your Python script and call the relevant functions. For example, to train a YOLOv6 model, you can use the train() function, which takes as input the training data, the model configuration, and a set of training parameters. Once the model is trained, you can use the predict() function to generate predictions on new images.
+
+Overall, the yolov6 package provides a powerful and user-friendly tool for implementing the YOLOv6 object detection algorithm in your own projects.
 """
 
 import cv2
@@ -35,8 +43,10 @@ class Node(AbstractNode):
         self.agnostic_nms = False
         self.max_det = 1000
         self.stride = 32
+        
+        
         self.device = 'cpu'
-        self.half = False
+        self.half = False # False
 
         self.model = YoloV6Model(weights_file, conf_file, device=self.device)        
         # initialize/load any configs and models here
@@ -64,7 +74,8 @@ class Node(AbstractNode):
         # check image and font
         assert img_src.data.contiguous, 'Image needs to be contiguous. Please apply to input images with np.ascontiguousarray(im).'
         
-        outputs = {}
+        outputs = {"bboxes": np.zeros(shape=(1, 4)), "bbox_labels": [0], "bbox_scores": []}
+        
         if len(det):
             bboxes = xyxy2xyxyn(det[:, :4], img_src.shape[0], img_src.shape[1])
             bboxes = np.array(bboxes.detach().numpy())

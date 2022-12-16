@@ -1,10 +1,10 @@
 nodes:
 - input.visual:
-    # source: "peekingduck/nodes/model/yolov6v1/coco/val"
-    # source: 0
+    # source: "peekingduck/nodes/model/yolov6v1/coco/val/000000000139.jpg"
+    source: 0
     # source: https://storage.googleapis.com/peekingduck/videos/single_person.mp4
     # source: https://storage.googleapis.com/peekingduck/videos/multiple_people.mp4
-    source: https://storage.googleapis.com/peekingduck/videos/mot.mp4
+    # source: https://storage.googleapis.com/peekingduck/videos/mot.mp4
 - model.yolov6
 - dabble.fps                           # add new dabble node
 - draw.bbox:
