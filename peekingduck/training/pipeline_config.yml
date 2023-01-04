@@ -1,0 +1,13 @@
+defaults:
+  - _self_
+  - augmentation:
+      options: 
+        resize: True
+        scale: True
+  - callbacks: 
+      options:
+        early_stopping: True
+        checkpoint: True
+  - metric: accuracy
+  - model: simple_mode
+  - trainer: trainer
